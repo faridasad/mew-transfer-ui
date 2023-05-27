@@ -9,6 +9,7 @@ import { useRef, useState, useCallback, useMemo } from "react";
 import "./card.scss";
 import Icon from "../Icons";
 import axios from "axios";
+import { formatBytes, formatFileSize } from "../../utils/sizeFormatter";
 
 interface FileProps {
   name: string;
@@ -166,7 +167,7 @@ function Card() {
                 <div className="file-row" key={index}>
                   <span className="filename">{file.name}</span>
                   <span className="details">
-                    {file.size} &bull; {file.type}
+                    {formatFileSize(Number(file.size))} &bull; {file.type}
                   </span>
                   <span className="delete-btn">
                     <button
